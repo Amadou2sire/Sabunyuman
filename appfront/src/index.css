@@ -1,0 +1,64 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+@media screen and (max-width: 576px) {
+  .carousel {
+    margin-top: 56px;
+    /* Vous pouvez ajuster cette valeur selon vos besoins */
+    position: relative;
+  }
+
+  .titleh3::after {
+    content: "";
+    display: inline-block;
+    width: 50%;
+    /* ou ajustez la largeur selon vos besoins */
+    height: 1px;
+    background-color: coral;
+    /* couleur de la ligne */
+    margin-right: -1px;
+    /* espacement entre la ligne et le titre */
+  }
+}
+
+.titleh3 {
+  color: coral !important;
+}
+.bg-orange{
+  background-color: #e6882e;
+}
+
+.titleh3::after {
+  content: "";
+  display: inline-block;
+  width: 50%;
+  /* ou ajustez la largeur selon vos besoins */
+  height: 1px;
+  background-color: coral;
+  /* couleur de la ligne */
+  margin-right: 10px;
+  /* espacement entre la ligne et le titre */
+}
+
+.top_bar {
+  position: relative;
+  z-index: 20;
+  font-size: 13px;
+  background-color: #e6882e;
+}
+
+.titleh3desc {
+  font-size: 20px;
+  color: #006654 !important;
+}
