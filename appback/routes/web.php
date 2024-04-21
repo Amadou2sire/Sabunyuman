@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\SouscriptionController;
 use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Route;
@@ -41,6 +42,17 @@ Route::post('/multi/image',[BrandController::class,'StoreImage'])->name('store.i
 
 //log out
 Route::get('/user/logout',[BrandController::class,'Logout'])->name('user.logout');
+
+//Souscription
+Route::get('/souscription/all',[SouscriptionController::class,'AllSouscription'])->name('all.souscription');
+Route::post('/souscription/add',[SouscriptionController::class,'StoreSouscription'])->name('store.souscription');
+Route::post('/souscription/update/{id}',[SouscriptionController::class,'Update']);
+Route::get('/souscription/edit/{id}',[SouscriptionController::class,'Edit']);
+Route::get('/souscription/delete/{id}',[SouscriptionController::class,'Delete']);
+
+
+
+
 
 
 

@@ -1,8 +1,9 @@
 <?php
 
-use App\Http\Controllers\BrandController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\BrandController;
+use App\Http\Controllers\SouscriptionController;
 use App\Http\Controllers\Api\AuthenticationController;
 
 /*
@@ -20,6 +21,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 Route::get('/allbrands',[BrandController::class,'getBrand']);
+Route::get('/allsouscription',[SouscriptionController::class,'getSouscription']);
+Route::post('/storesouscription',[SouscriptionController::class,'StoreSouscription']);
 
 
 Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {

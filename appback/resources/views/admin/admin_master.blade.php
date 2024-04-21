@@ -25,7 +25,16 @@
     <!-- SLEEK CSS -->
     <link id="sleek-css" rel="stylesheet" href="{{ asset('public/backend/assets/css/sleek.css') }}" />
 
+    <script src={{ asset('js/tinymce/tinymce.min.js') }}></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea#mytextarea',
+            plugins: 'preview importcss searchreplace autolink autosave save directionality code visualblocks visualchars fullscreen image link media template codesample table charmap pagebreak nonbreaking anchor insertdatetime advlist lists wordcount help charmap quickbars emoticons',
+            menubar: 'file edit view insert format tools table help',
+            toolbar: 'undo redo | bold italic underline strikethrough | fontfamily fontsize blocks | alignleft aligncenter alignright alignjustify | outdent indent |  numlist bullist | forecolor backcolor removeformat | pagebreak | charmap emoticons | fullscreen  preview save print | insertfile image media template link anchor codesample | ltr rtl',
 
+        });
+    </script>
 
     <!-- FAVICON -->
     <link href="assets/img/favicon.png" rel="shortcut icon" />
@@ -39,6 +48,7 @@
     <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
   <![endif]-->
     <script src="{{ asset('public/backend/assets/plugins/nprogress/nprogress.js') }}"></script>
+
 </head>
 
 
@@ -86,15 +96,15 @@
                     <div class="navbar-right ">
                         <ul class="nav navbar-nav">
                             <!-- Github Link Button -->
-                            <li class="github-link mr-3">
+                            {{-- <li class="github-link mr-3">
                                 <a class="btn btn-outline-secondary btn-sm"
                                     href="https://github.com/tafcoder/sleek-dashboard" target="_blank">
                                     <span class="d-none d-md-inline-block mr-2">Source Code</span>
                                     <i class="mdi mdi-github-circle"></i>
                                 </a>
 
-                            </li>
-                            <li class="dropdown notifications-menu">
+                            </li> --}}
+                            {{-- <li class="dropdown notifications-menu">
                                 <button class="dropdown-toggle" data-toggle="dropdown">
                                     <i class="mdi mdi-bell-outline"></i>
                                 </button>
@@ -139,28 +149,29 @@
                                         <a class="text-center" href="#"> View All </a>
                                     </li>
                                 </ul>
-                            </li>
+                            </li> --}}
                             <!-- User Account -->
                             <li class="dropdown user-menu">
                                 <button href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                                     {{-- <img src="{{asset('public/backend/assets/img/user/user.png')}}" class="user-image" alt="User Image" /> --}}
-                                    <span class="d-none d-lg-inline-block">Abdus Salam</span>
+                                    <span class="d-none d-lg-inline-block">{{ Auth::user()->name }}</span>
                                 </button>
                                 <ul class="dropdown-menu dropdown-menu-right">
                                     <!-- User image -->
                                     <li class="dropdown-header">
                                         {{-- <img src="{{asset('public/backend/assets/img/user/user.png')}}" class="img-circle" alt="User Image" /> --}}
                                         <div class="d-inline-block">
-                                            Abdus Salam <small class="pt-1">abdus@gmail.com</small>
+                                            {{ Auth::user()->name }} <small
+                                                class="pt-1">{{ Auth::user()->email }}</small>
                                         </div>
                                     </li>
 
                                     <li>
-                                        <a href="profile.html">
+                                        <a href="{{ route('profile.show') }}">
                                             <i class="mdi mdi-account"></i> My Profile
                                         </a>
                                     </li>
-                                    <li>
+                                    {{-- <li>
                                         <a href="email-inbox.html">
                                             <i class="mdi mdi-email"></i> Message
                                         </a>
@@ -170,10 +181,11 @@
                                     </li>
                                     <li>
                                         <a href="#"> <i class="mdi mdi-settings"></i> Account Setting </a>
-                                    </li>
+                                    </li> --}}
 
                                     <li class="dropdown-footer">
-                                        <a href="{{route('user.logout')}}"> <i class="mdi mdi-logout"></i> Log Out </a>
+                                        <a href="{{ route('user.logout') }}"> <i class="mdi mdi-logout"></i> Log Out
+                                        </a>
                                     </li>
                                 </ul>
                             </li>
@@ -189,17 +201,13 @@
                 <div class="content">
                     @yield('admin')
                 </div>
-
-
-
-
             </div>
 
             <footer class="footer mt-auto">
                 <div class="copyright bg-white">
                     <p>
-                        &copy; <span id="copy-year">2019</span> Copyright Sleek Dashboard Bootstrap Template by
-                        <a class="text-primary" href="http://www.iamabdus.com/" target="_blank">Abdus</a>.
+                        &copy; <span id="copy-year">2024</span> Template by
+                        <a class="text-primary" href="#?" target="_blank">Amadou</a>.
                     </p>
                 </div>
                 <script>

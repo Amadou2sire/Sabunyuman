@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 function Header() {
     return (
         <>
+
             <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
                 <div class="container-fluid">
                     <a class="logohome navbar-brand" href="/"> <img src='images/logo.png' alt='logo sabunyuma' width={100} /> </a>

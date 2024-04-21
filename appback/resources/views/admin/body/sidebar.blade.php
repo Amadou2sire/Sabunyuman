@@ -3,8 +3,8 @@
         <!-- Aplication Brand -->
         <div class="app-brand">
             <a href="/index.html">
-                <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid"
-                    width="30" height="33" viewBox="0 0 30 33">
+                <svg class="brand-icon" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid" width="30"
+                    height="33" viewBox="0 0 30 33">
                     <g fill="none" fill-rule="evenodd">
                         <path class="logo-fill-blue" fill="#7DBCFF" d="M0 4v25l8 4V0zM22 4v25l8 4V0z" />
                         <path class="logo-fill-white" fill="#FFF" d="M11 4v25l8 4V0z" />
@@ -24,51 +24,64 @@
                 <li class="has-sub active expand">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
-                        <i class="mdi mdi-view-dashboard-outline"></i>
-                        <span class="nav-text">Dashboard</span> <b class="caret"></b>
+                        <i class="mdi mdi-folder-multiple-outline"></i>
+                        <span class="nav-text">Les assurances</span>
                     </a>
-                    <ul class="collapse show" id="dashboard" data-parent="#sidebar-menu">
-                        <div class="sub-menu">
+                </li>
 
 
-
-                            <li class="active">
-                                <a class="sidenav-item-link" href="index.html">
-                                    <span class="nav-text">Ecommerce</span>
-
-                                </a>
-                            </li>
-
-
-
-
-
-
-                            <li>
-                                <a class="sidenav-item-link" href="analytics.html">
-                                    <span class="nav-text">Analytics</span>
-
-                                    <span class="badge badge-success">new</span>
-
-                                </a>
-                            </li>
-
-
-
-
-                        </div>
-                    </ul>
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse1"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-folder-multiple-outline"></i>
+                        <span class="nav-text">Les souscriptions</span>
+                    </a>
+                </li>
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse1"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Les Bannières</span>
+                    </a>
+                </li>
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse1"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-chart-pie"></i>
+                        <span class="nav-text">Les Vidéos</span>
+                    </a>
+                </li>
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse1"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-book-open-page-variant"></i>
+                        <span class="nav-text">Les Faqs</span>
+                    </a>
+                </li>
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse1"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Les Agences</span>
+                    </a>
+                </li>
+                <li class="has-sub active expand">
+                    <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse1"
+                        data-target="#dashboard" aria-expanded="false" aria-controls="dashboard">
+                        <i class="mdi mdi-view-dashboard-outline"></i>
+                        <span class="nav-text">Les Partenaires</span>
+                    </a>
                 </li>
 
 
 
 
 
-                <li class="has-sub">
+                {{-- <li class="has-sub">
                     <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                         data-target="#ui-elements" aria-expanded="false" aria-controls="ui-elements">
                         <i class="mdi mdi-folder-multiple-outline"></i>
-                        <span class="nav-text">UI Elements</span> <b class="caret"></b>
+                        <span class="nav-text">Les produits</span> <b class="caret"></b>
                     </a>
                     <ul class="collapse" id="ui-elements" data-parent="#sidebar-menu">
                         <div class="sub-menu">
@@ -77,7 +90,7 @@
                             <li class="has-sub">
                                 <a class="sidenav-item-link" href="javascript:void(0)" data-toggle="collapse"
                                     data-target="#components" aria-expanded="false" aria-controls="components">
-                                    <span class="nav-text">Components</span> <b class="caret"></b>
+                                    <span class="nav-text">Liste des produits</span> <b class="caret"></b>
                                 </a>
                                 <ul class="collapse" id="components">
                                     <div class="sub-menu">
@@ -533,7 +546,7 @@
 
                         </div>
                     </ul>
-                </li>
+                </li> --}}
 
 
 
@@ -543,6 +556,6 @@
 
         <hr class="separator" />
 
-        
+
     </div>
 </aside>
