@@ -4,7 +4,7 @@
     </div>
     <div class="col-md-10">
         <div class="container mt-5">
-            <h4 class="pt-5">Les Bannières</h4>
+            <h4 class="pt-5">Les FAQ</h4>
 
             @if (session('success'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -17,26 +17,32 @@
                 <div class="d-flex">
                     {{-- <div class="card-header pb-5">Les souscriptions</div> --}}
                     <div class="m-3">
-                        <a class="btn btn-success" href="{{ url('banner/add_banner') }}"> Ajouter une bannière</a>
+                        <a class="btn btn-success" href="{{ url('faq/add_faq') }}"> Ajouter un Faq</a>
                     </div>
                 </div>
                 <table class="table table-striped">
                     <thead>
                         <tr>
                             <th scope="col">#</th>
-                            <th scope="col">Image</th>
+                            <th scope="col">Questions</th>
+                            <th scope="col">Réponse</th>
+                            <th scope="col">Souscription</th>
                             <th scope="col">Date de création</th>
                             <th scope="col">Action</th>
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($banners as $banner)
+                        @foreach ($faqs as $faq)
                             <tr>
-                                <th scope="row">{{ $banner->id }}</th>
-                                <td><img src="{{ asset($banner->image) }}" style="width: 70px; height:70px"></td>
+                                <th scope="row">{{ $faq->id }}</th>
+                                <td>{{ $faq->question }}</td>
+                                <td class="text-wrap">
+                                    {{ substr($faq->reponse, 0, 10) }}{{ strlen($faq->reponse) > 10 ? '...' : '' }}
+                                </td>
+                                <td>{{ $faq->souscription }}</td>
                                 <td>
-                                    @if ($banner->created_at)
-                                        {{ $banner->created_at->format('d/m/Y') }}
+                                    @if ($faq->created_at)
+                                        {{ $faq->created_at->format('d/m/Y') }}
                                     @else
                                         <span class="text-danger">Pas de date</span>
                                     @endif
@@ -44,9 +50,9 @@
                                 <td>
                                     <div class="d-flex flex-row mb-3 ">
                                         <a class=" btn btn-sm btn-warning m-1"
-                                            href="{{ url('banner/edit/' . $banner->id) }}">Modifier</a>
+                                            href="{{ url('faq/edit/' . $faq->id) }}">Modifier</a>
                                         <a class=" btn btn-sm btn-danger m-1"
-                                            href="{{ url('banner/delete/' . $banner->id) }}">Supprimer</a>
+                                            href="{{ url('faq/delete/' . $faq->id) }}">Supprimer</a>
                                     </div>
                                 </td>
                             </tr>
@@ -56,7 +62,7 @@
             </div>
 
             <div class="mt-4">
-                {{ $banners->links() }}
+                {{ $faqs->links() }}
             </div>
         </div>
     </div>

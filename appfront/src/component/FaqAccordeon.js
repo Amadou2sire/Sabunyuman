@@ -1,52 +1,55 @@
-import React from "react";
-
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function FaqAccordeon() {
+    const [faqs, setFaqs] = useState([]);
+
+    useEffect(() => {
+        const fetchFaqs = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/faq', {
+                    params: {
+                        souscription: '2roues'
+                    }
+                });
+                setFaqs(response.data);
+            } catch (error) {
+                console.error('Error fetching FAQs:', error);
+            }
+        };
+
+        fetchFaqs();
+    }, []);
+
     return (
-        <>
-            <div className=" container mt-5">
-                <h4 className="titleh3">Avez vous des question?</h4>
-                <div class="accordion" id="accordionExample">
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                Accordion Item #1
-                            </button>
-                        </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the first item's accordion body.</strong> It is shown by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+        <div className="container mt-5">
+            <h4 className="titleh3">Avez-vous des questions?</h4>
+
+            <div className="row">
+                <div className="col-md-4 ">
+                    <img className="mx-auto d-block img-fluid" src="/images/actu/2Roues.jpg" width={350} alt="Assurances deux roues" />
+                </div>
+                <div className="col-md-8 ">
+                    <div className="accordion container" id="accordionExample">
+                        {faqs.map(faq => (
+                            <div className="accordion-item" key={faq.id}>
+                                <h2 className="accordion-header" id={`heading${faq.id}`}>
+                                    <button className="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target={`#collapse${faq.id}`} aria-expanded="true" aria-controls={`collapse${faq.id}`}>
+                                        {faq.question}
+                                    </button>
+                                </h2>
+                                <div id={`collapse${faq.id}`} className="accordion-collapse collapse" aria-labelledby={`heading${faq.id}`} data-bs-parent="#accordionExample">
+                                    <div className="accordion-body">
+                                        {faq.reponse}
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Accordion Item #2
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the second item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
-                    </div>
-                    <div class="accordion-item">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                Accordion Item #3
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
-                                <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
-                            </div>
-                        </div>
+                        ))}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
 
-export default FaqAccordeon
+export default FaqAccordeon;

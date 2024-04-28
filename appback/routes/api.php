@@ -1,5 +1,8 @@
 <?php
 
+use App\Http\Controllers\BannerController;
+use App\Http\Controllers\FaqController;
+use App\Http\Controllers\VideosController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BrandController;
@@ -22,7 +25,20 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 Route::get('/allbrands',[BrandController::class,'getBrand']);
 Route::get('/allsouscription',[SouscriptionController::class,'getSouscription']);
+Route::get('/souscription/{id}',[SouscriptionController::class,'ShowSouscription']);
 Route::post('/storesouscription',[SouscriptionController::class,'StoreSouscription']);
+
+//FAQ
+Route::get('/faq',[FaqController::class,'getFaq']);
+
+//Banner
+Route::get('/banner',[BannerController::class,'getBanner']);
+
+
+//Video
+Route::get('/video',[VideosController::class,'getVideo']);
+Route::get('/latestvideo',[VideosController::class,'getlatestVideo']);
+
 
 
 Route::group(['namespace' => 'Api', 'prefix' => 'v1'], function () {

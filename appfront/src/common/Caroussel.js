@@ -1,49 +1,38 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Carousel } from "react-bootstrap";
 
-
 function Caroussel() {
+    const [images, setImages] = useState([]);
+
+    useEffect(() => {
+        const fetchImages = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/banner');
+                setImages(response.data);
+            } catch (error) {
+                console.error('Error fetching images:', error);
+            }
+        };
+
+        fetchImages();
+    }, []);
+
     return (
         <Carousel className="mt-5">
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="images/04.jpg"
-                    alt="First slide"
-                    style={{ maxHeight: "700px", objectFit: "cover" }}
-                />
-                <Carousel.Caption>
-                    <h3>Example headline.</h3>
-                    <p>Some representative placeholder content for the first slide of the carousel.</p>
-                    <p><a className="btn btn-lg btn-primary" href="#">Sign up today</a></p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="images/05.jpg"
-                    alt="Second slide"
-                    style={{ maxHeight: "700px", objectFit: "cover" }}
-                />
-                <Carousel.Caption>
-                    <h3>Another example headline.</h3>
-                    <p>Some representative placeholder content for the second slide of the carousel.</p>
-                    <p><a className="btn btn-lg btn-primary" href="#">Learn more</a></p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="images/06.jpg"
-                    alt="Third slide"
-                    style={{ maxHeight: "700px", objectFit: "cover" }}
-                />
-                <Carousel.Caption>
-                    <h3>One more for good measure.</h3>
-                    <p>Some representative placeholder content for the third slide of this carousel.</p>
-                    <p><a className="btn btn-lg btn-primary" href="#">Browse gallery</a></p>
-                </Carousel.Caption>
-            </Carousel.Item>
+            {images.map((image, index) => (
+                <Carousel.Item key={index}>
+                    <img
+                        className="d-block w-100"
+                        src={`http://127.0.0.1:8000/${image.image}`} alt='Sabunyuman'
+                        style={{ maxHeight: "700px", objectFit: "cover" }}
+                    />
+                    {/* <Carousel.Caption>
+                        <h3>{image.title}</h3>
+                        <p>{image.description}</p>
+                    </Carousel.Caption> */}
+                </Carousel.Item>
+            ))}
         </Carousel>
     );
 }

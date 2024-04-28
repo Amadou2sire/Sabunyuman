@@ -19,7 +19,7 @@ class CategoryController extends Controller
     public function AllCat()
     {
         $categories = Category::latest()->simplePaginate(5);
-        $trachCat = Category::onlyTrashed()->latest()->simplePaginate(3);
+        // $trachCat = Category::onlyTrashed()->latest()->simplePaginate(3);
 
         // $categories= DB::table('categories')->latest()->simplePaginate(5);
         return view('admin.category.index', compact('categories', 'trachCat'));

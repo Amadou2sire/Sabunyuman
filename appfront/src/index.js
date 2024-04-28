@@ -7,6 +7,7 @@ import Home from './pages/Home.js';
 import Presentation from './pages/Presentation.js';
 import Contact from './pages/Contact.js';
 import reportWebVitals from './reportWebVitals';
+import Produits from './pages/produits/produits.js';
 
 // Définissez vos routes à l'intérieur du composant Router
 ReactDOM.render(
@@ -16,6 +17,7 @@ ReactDOM.render(
         <Route path="/" element={<Home />} /> {/* Route vers la page Home */}
         <Route path="/presentation" element={<Presentation />} /> {/* Route vers la page Presentation */}
         <Route path="/contact" element={<Contact />} /> {/* Route vers la page contact */}
+        <Route path="/produits/:id" element={<Produits />} /> {/* Route vers la page produits */}
       </Routes>
     </Router>
   </React.StrictMode>,

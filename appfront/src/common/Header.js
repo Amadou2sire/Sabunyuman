@@ -8,7 +8,7 @@ function Header() {
 
             <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
                 <div class="container-fluid">
-                    <a class="logohome navbar-brand" href="/"> <img src='images/logo.png' alt='logo sabunyuma' width={100} /> </a>
+                    <a class="logohome navbar-brand" href="/"> <img src='/images/logo.png' alt='logo sabunyuma' width={100} /> </a>
                     <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
                         <span class="navbar-toggler-icon"></span>
                     </button>
@@ -79,7 +79,7 @@ function Header() {
 
                         </ul>
                         <div class="header_socials">                            
-                            <a target="_blank" href="https://www.facebook.com/sabunyumanmali/"><img src='logo/facebook.png' alt='facebook' width={30}/></a>
+                            <a target="_blank" href="https://www.facebook.com/sabunyumanmali/"><img src='/logo/facebook.png' alt='facebook' width={30}/></a>
                          </div>
                     </div>
                 </div>

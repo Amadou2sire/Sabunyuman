@@ -1,58 +1,121 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
+import Slider from "react-slick";
+
+import ReactPlayer from 'react-player'
 
 function Actualite() {
+    var settings = {
+        dots: true,
+        infinite: false,
+        speed: 500,
+        slidesToShow: 2,
+        slidesToScroll: 4,
+        initialSlide: 0,
+        responsive: [
+            {
+                breakpoint: 1024,
+                settings: {
+                    slidesToShow: 3,
+                    slidesToScroll: 3,
+                    infinite: true,
+                    dots: true
+                }
+            },
+            {
+                breakpoint: 600,
+                settings: {
+                    slidesToShow: 2,
+                    slidesToScroll: 2,
+                    initialSlide: 2
+                }
+            },
+            {
+                breakpoint: 480,
+                settings: {
+                    slidesToShow: 1,
+                    slidesToScroll: 1
+                }
+            }
+        ]
+    };
+
+    const [videos, setVideos] = useState([]);
+    const [otherVideos, setOtherVideos] = useState([]);
+
+    useEffect(() => {
+        const fetchVideos = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/latestvideo');
+                setVideos(response.data);
+            } catch (error) {
+                console.error('Error fetching latest videos:', error);
+            }
+        };
+
+        const fetchOtherVideos = async () => {
+            try {
+                const response = await axios.get('http://127.0.0.1:8000/api/video');
+                setOtherVideos(response.data);
+            } catch (error) {
+                console.error('Error fetching other videos:', error);
+            }
+        };
+
+        fetchVideos();
+        fetchOtherVideos();
+    }, []);
+
+    if (videos.length === 0 || otherVideos.length === 0) {
+        return <div>Loading...</div>;
+    }
+
     return (
         <div className="container mt-5">
-            <div class="container">
+            <div className="container">
                 <h4 className="card-header  fw-bold  titleh3 mb-4">
                     Les actualités
                 </h4>
-                <div class="row container">
-                    <div class="col-md-7 ">
-                        <img className="img-fluid" src="/images/actu/actu1.jpg" alt="actu" />
-                    </div>
-                    <div class="col-md-5 mr-1">
-                        <p className="display-6 fw-bold" >100% ETF : Youssef, pompier, nous raconte ses premiers investissements. Et si c’était vous ?</p>
-                        <p className="" >100% ETF, l'émission pour comprendre et bien utiliser les ETF, présente une toute nouvelle série intitulée "Et si c'était vous ?". Dans cet épisode, Youssef, âgé de 34 ans, partagera son expérience en tant qu'investisseur, et Charlotte GROSSEAU, responsable commerciale Ishares.</p>
-                        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="button" className="btn btn-outline-secondary btn-lg px-4">Lire plus</button>
+                <div className="row container">
+                    {videos.map((video, index) => (
+                        <div key={index} className="col-md-12">
+                            <div className="row">
+                                <div className="col-md-7 mb-5 align-items-center justify-content-center">
+                                    <ReactPlayer url={video.iframe} />
+                                </div>
+                                <div className="col-md-5">
+                                    <p className="display-6 fw-bold">{video.name}</p>
+                                    <p className="">{video.description}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+
+                <div className="slider-container">
+                    <h4 className="card-header  fw-bold  titleh3 mb-4">
+                        Les autres actualités
+                    </h4>
+
+                    <div className="row slider-container  mt-5">
+                        <div className="">
+                            <Slider {...settings}>
+                                {otherVideos.map((otherVideo, index) => (
+                                    <div key={index} >
+                                        <div className="col-md-3">
+                                            <ReactPlayer url={otherVideo.iframe} 
+                                            width='600px'
+                                            height='360px' />
+                                        </div>
+                                    </div>
+                                ))}
+                            </Slider>
                         </div>
                     </div>
                 </div>
-                <div class="row container mt-5">
-                    <div class="col-md-3 ">
-                        <img className="img-fluid" src="/images/actu/actu1.jpg" alt="actu" />
-                        <p>100% ETF : Youssef, pompier, nous raconte ses premiers investissements. Et si c’était vous ?</p>
-                        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="button" className="btn btn-outline-secondary btn-lg px-4">Lire plus</button>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <img className="img-fluid" src="/images/actu/actu1.jpg" alt="actu" />
-                        <p>100% ETF : Youssef, pompier, nous raconte ses premiers investissements. Et si c’était vous ?</p>
-                        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="button" className="btn btn-outline-secondary btn-lg px-4">Lire plus</button>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <img className="img-fluid" src="/images/actu/actu1.jpg" alt="actu" />
-                        <p>100% ETF : Youssef, pompier, nous raconte ses premiers investissements. Et si c’était vous ?</p>
-                        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="button" className="btn btn-outline-secondary btn-lg px-4">Lire plus</button>
-                        </div>
-                    </div>
-                    <div class="col-md-3 ">
-                        <img className="img-fluid" src="/images/actu/actu1.jpg" alt="actu" />
-                        <p>100% ETF : Youssef, pompier, nous raconte ses premiers investissements. Et si c’était vous ?</p>
-                        <div className="d-grid gap-2 d-sm-flex justify-content-sm-center">
-                            <button type="button" className="btn btn-outline-secondary btn-lg px-4">Lire plus</button>
-                        </div>
-                    </div>
-
-
-                </div>
-            </div>
-        </div>
-    )
+            </div >
+        </div >
+    );
 }
-export default Actualite
+
+export default Actualite;

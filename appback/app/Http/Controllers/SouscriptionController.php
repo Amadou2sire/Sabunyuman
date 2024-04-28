@@ -15,10 +15,17 @@ class SouscriptionController extends Controller
     }
 
     public function getSouscription()
-    {
-        $souscriptions = Souscription::all();
-        return response()->json($souscriptions); 
-    }
+{
+    $souscriptions = Souscription::latest()->take(4)->get();
+    return response()->json($souscriptions);
+}
+
+public function ShowSouscription($id)
+{
+    $souscriptions = Souscription::findOrFail($id);
+    return response()->json($souscriptions);
+}
+
 
     public function StoreSouscription(Request $request)
     {
